@@ -32,6 +32,12 @@ public class TeamTest {
         Team found = DBHelper.findById(Team.class, team.getId());
         int result = DBHelper.getPlayersFromTeam(found).size();
         assertEquals(1, result);
+    }
 
+    @Test
+    public void testCanGetManager() {
+        Team found = DBHelper.findById(Team.class, team.getId());
+        Manager result = DBHelper.getManager(found);
+        assertEquals("Brendan Rodgers", result.getName());
     }
 }

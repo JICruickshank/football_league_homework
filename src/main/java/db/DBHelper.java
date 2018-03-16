@@ -1,5 +1,6 @@
 package db;
 
+import models.Manager;
 import models.Player;
 import models.Team;
 import org.hibernate.*;
@@ -105,7 +106,15 @@ public class DBHelper {
         cr.add(Restrictions.eq("team", team));
         results = getList(cr);
         return results;
+    }
 
+    public static Manager getManager(Team team) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Manager result = null;
+        Criteria cr = session.createCriteria(Manager.class);
+        cr.add(Restrictions.eq("team", team));
+        result = getUniqueResult(cr);
+        return result;
     }
 
 
