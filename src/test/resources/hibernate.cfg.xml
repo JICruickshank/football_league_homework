@@ -15,5 +15,6 @@
         <property name="show_sql">true</property>
         <mapping class="models.Staff"/>
         <mapping class="models.Player"/>
+        <mapping class="models.Manager"/>
     </session-factory>
 </hibernate-configuration>
