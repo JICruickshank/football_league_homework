@@ -1,5 +1,7 @@
 package db;
 
+import models.Player;
+import models.Team;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
@@ -94,6 +96,16 @@ public class DBHelper {
         finally {
             session.close();
         }
+    }
+
+    public static List<Player> getPlayersFromTeam(Team team) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Player> results = null;
+        Criteria cr = session.createCriteria(Player.class);
+        cr.add(Restrictions.eq("team", team));
+        results = getList(cr);
+        return results;
+
     }
 
 

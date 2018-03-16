@@ -12,7 +12,8 @@ public class Team {
     private String name;
     private int id;
 
-    public Team() { }
+    public Team() {
+    }
 
     public Team(String name) {
         this.employees = new ArrayList<Employee>();
@@ -47,5 +48,5 @@ public class Team {
     public void setId(int id) {
         this.id = id;
     }
-}
 
+}
