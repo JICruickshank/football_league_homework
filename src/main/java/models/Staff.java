@@ -10,6 +10,7 @@ public abstract class Staff {
     private String name;
     private int age;
     private int id;
+    private Team team;
 
     public Staff() {
     }
@@ -46,5 +47,14 @@ public abstract class Staff {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

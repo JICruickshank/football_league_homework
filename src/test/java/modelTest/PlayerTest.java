@@ -13,6 +13,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
+
         player = new Player("Kieran Tierney", 20, Position.DEFENDER, 63);
     }
 
