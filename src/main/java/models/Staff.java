@@ -1,5 +1,10 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public abstract class Staff {
 
     private String name;
@@ -14,6 +19,7 @@ public abstract class Staff {
         this.age = age;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -22,6 +28,7 @@ public abstract class Staff {
         this.name = name;
     }
 
+    @Column(name = "age")
     public int getAge() {
         return age;
     }
@@ -30,6 +37,9 @@ public abstract class Staff {
         this.age = age;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }

@@ -1,5 +1,13 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Player extends Staff {
 
     private Position position;
@@ -14,6 +22,7 @@ public class Player extends Staff {
         this.squadNumber = squadNumber;
     }
 
+    @Column(name = "position")
     public Position getPosition() {
         return position;
     }
@@ -22,6 +31,7 @@ public class Player extends Staff {
         this.position = position;
     }
 
+    @Column(name = "squad_number")
     public int getSquadNumber() {
         return squadNumber;
     }
