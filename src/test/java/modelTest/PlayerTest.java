@@ -21,5 +21,18 @@ public class PlayerTest {
         assertEquals("Kieran Tierney", player.getName());
     }
 
+    @Test
+    public void testCanGetAge() {
+        assertEquals(20, player.getAge());
+    }
 
+    @Test
+    public void testCanGetPosition() {
+        assertEquals(Position.DEFENDER, player.getPosition());
+    }
+
+    @Test
+    public void testCanGetSquadNumber() {
+        assertEquals(63, player.getSquadNumber());
+    }
 }
