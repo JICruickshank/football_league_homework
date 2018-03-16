@@ -1,41 +1,34 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "teams")
 public class Team {
 
-    private List<Player> players;
-    private Manager manager;
+    private List<Employee> employees;
     private String name;
     private int id;
 
     public Team() { }
 
-    public Team(String name, Manager manager) {
-        this.players = new ArrayList<Player>();
-        this.manager = manager;
+    public Team(String name) {
+        this.employees = new ArrayList<Employee>();
         this.name = name;
     }
 
-
-    public List<Player> getPlayers() {
-        return players;
+    @OneToMany(mappedBy = "team")
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
-
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
-
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -44,16 +37,15 @@ public class Team {
         this.name = name;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void addPlayerToTeam(Player player) {
-        players.add(player);
     }
 }
 

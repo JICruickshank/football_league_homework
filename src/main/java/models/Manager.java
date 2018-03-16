@@ -6,13 +6,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "manager")
 
-public class Manager extends Staff {
+public class Manager extends Employee {
 
     public Manager() {
     }
 
-    public Manager(String name, int age) {
-        super(name, age);
+    public Manager(String name, int age, Team team) {
+        super(name, age, team);
     }
 }
 

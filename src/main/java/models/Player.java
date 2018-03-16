@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "players")
-public class Player extends Staff {
+public class Player extends Employee {
 
     private Position position;
     private int squadNumber;
@@ -12,8 +12,8 @@ public class Player extends Staff {
     public Player() {
     }
 
-    public Player(String name, int age, Position position, int squadNumber) {
-        super(name, age);
+    public Player(String name, int age, Team team, Position position, int squadNumber) {
+        super(name, age, team);
         this.position = position;
         this.squadNumber = squadNumber;
     }

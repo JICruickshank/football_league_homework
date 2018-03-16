@@ -5,19 +5,20 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public abstract class Staff {
+public abstract class Employee {
 
     private String name;
     private int age;
     private int id;
     private Team team;
 
-    public Staff() {
+    public Employee() {
     }
 
-    public Staff(String name, int age) {
+    public Employee(String name, int age, Team team) {
         this.name = name;
         this.age = age;
+        this.team = team;
     }
 
     @Column(name = "name")
@@ -49,7 +50,8 @@ public abstract class Staff {
         this.id = id;
     }
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id", nullable = false)
     public Team getTeam() {
         return team;
     }

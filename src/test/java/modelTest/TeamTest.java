@@ -17,8 +17,10 @@ public class TeamTest {
 
     @Before
     public void setUp() throws Exception {
-        manager = new Manager("Brendan Rodgers", 45);
-        team = new Team("Glasgow Celtic", manager);
+        team = new Team("Glasgow Celtic");
+        manager = new Manager("Brendan Rodgers", 45, team);
+        player = new Player("Kieran Tierney", 20, team, Position.DEFENDER, 63);
+
     }
 
     @Test
@@ -26,16 +28,4 @@ public class TeamTest {
         assertEquals("Glasgow Celtic", team.getName());
     }
 
-    @Test
-    public void testCanGetManager() {
-        assertEquals("Brendan Rodgers", team.getManager().getName());
-    }
-
-    @Test
-    public void testCanAddPlayer() {
-        assertEquals(0, team.getPlayers().size());
-        player = new Player("Kieran Tierney", 20, Position.DEFENDER, 63);
-        team.addPlayerToTeam(player);
-        assertEquals(1, team.getPlayers().size());
-        }
 }

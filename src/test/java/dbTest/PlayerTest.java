@@ -3,6 +3,7 @@ package dbTest;
 import db.DBHelper;
 import models.Player;
 import models.Position;
+import models.Team;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,10 +16,13 @@ import static org.junit.Assert.assertTrue;
 public class PlayerTest {
 
     private Player player;
+    private Team team;
 
     @Before
     public void setUp() throws Exception {
-        player = new Player("Kieran Tierney", 20, Position.DEFENDER, 63);
+        team = new Team("Glasgow Celtic");
+        player = new Player("Kieran Tierney", 20, team, Position.DEFENDER, 63);
+        DBHelper.saveOrUpdate(team);
         DBHelper.saveOrUpdate(player);
 
     }
@@ -41,7 +45,7 @@ public class PlayerTest {
 
     @Test
     public void testCanGetList() {
-        Player player2 = new Player("Moussa Dembele", 20, Position.ATTACKER, 10);
+        Player player2 = new Player("Moussa Dembele", 20, team, Position.ATTACKER, 10);
         DBHelper.saveOrUpdate(player2);
         List<Player> players = DBHelper.getAll(Player.class);
         assertTrue(players.size() > 0);
