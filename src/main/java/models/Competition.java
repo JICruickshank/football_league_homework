@@ -1,7 +1,13 @@
 package models;
 
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+@Entity
+@Table(name = "competitions")
 
 public class Competition {
 
@@ -18,6 +24,7 @@ public class Competition {
 
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -26,6 +33,7 @@ public class Competition {
         this.name = name;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "competitions")
     public List<Team> getTeams() {
         return teams;
     }
@@ -34,6 +42,9 @@ public class Competition {
         this.teams = teams;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }

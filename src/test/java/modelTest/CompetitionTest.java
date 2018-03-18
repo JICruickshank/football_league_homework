@@ -10,6 +10,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
+
 public class CompetitionTest {
 
     private Competition competition;
@@ -39,6 +40,9 @@ public class CompetitionTest {
         assertEquals(1, competition.getTeams().size());
         competition.removeTeam(team1);
         assertEquals(0, competition.getTeams().size());
+    }
 
+    @Test
+    public void testCan() {
     }
 }

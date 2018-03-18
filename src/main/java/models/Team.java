@@ -11,6 +11,7 @@ public class Team {
     private List<Employee> employees;
     private String name;
     private int id;
+    private List<Competition> competitions;
 
     public Team() {
     }
@@ -48,4 +49,20 @@ public class Team {
         this.id = id;
     }
 
+    @ManyToMany
+    @JoinTable(name = "competition_team",
+            joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "competition_id,", nullable = false, updatable = false)})
+
+    public List<Competition> getCompetitions() {
+        return competitions;
+    }
+
+    public void setCompetitions(List<Competition> competitions) {
+        this.competitions = competitions;
+    }
+
+    public void enterCompetition(Competition competition) {
+        competitions.add(competition);
+    }
 }
