@@ -39,13 +39,13 @@ public class PlayerTest {
         assertEquals("Wigan Athletic", updatedPlayer.getTeam().getName());
     }
 
-    @Test
-    public void testCanDelete() {
-        DBHelper.saveOrUpdate(team);
-        DBHelper.saveOrUpdate(player);
-        Player found = DBHelper.findById(Player.class, player.getId());
-        assertEquals("Kieran Tierney", found.getName());
-        DBHelper.delete(found);
-        assertNull(DBHelper.findById(Player.class, player.getId()));
-    }
+//    @Test
+//    public void testCanDelete() {
+//        DBHelper.saveOrUpdate(team);
+//        DBHelper.saveOrUpdate(player);
+//        Player found = DBHelper.findById(Player.class, player.getId());
+//        assertEquals("Kieran Tierney", found.getName());
+//        DBHelper.delete(found);
+//        assertNull(DBHelper.findById(Player.class, player.getId()));
+//    }
 }

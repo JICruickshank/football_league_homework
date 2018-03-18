@@ -62,12 +62,12 @@ public class TeamTest {
         assertEquals("Brendan Rodgers", result.getName());
     }
 
-    @Test
-    public void testCanDelete() {
-        Team found = DBHelper.findById(Team.class, team.getId());
-        assertEquals("Glasgow Celtic", found.getName());
-        DBHelper.delete(found);
-        Team result = DBHelper.findById(Team.class, found.getId());
-        assertNull(result);
-    }
+//    @Test
+//    public void testCanDelete() {
+//        Team found = DBHelper.findById(Team.class, team.getId());
+//        assertEquals("Glasgow Celtic", found.getName());
+//        DBHelper.delete(found);
+//        Team result = DBHelper.findById(Team.class, found.getId());
+//        assertNull(result);
+//    }
 }

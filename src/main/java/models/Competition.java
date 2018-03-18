@@ -15,14 +15,13 @@ public class Competition {
     private List<Team> teams;
     private int id;
 
-    public Competition(String name, List<Team> teams) {
+    public Competition() { }
+
+    public Competition(String name) {
         this.name = name;
         this.teams = new ArrayList<Team>();
     }
 
-    public Competition() {
-
-    }
 
     @Column(name = "name")
     public String getName() {

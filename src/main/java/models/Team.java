@@ -18,6 +18,7 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+        this.competitions = new ArrayList<Competition>();
     }
 
     @OneToMany(mappedBy = "team")
