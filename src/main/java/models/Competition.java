@@ -42,4 +42,12 @@ public class Competition {
         this.id = id;
     }
 
+    public void addTeam(Team team) {
+        this.teams.add(team);
+    }
+
+    public void removeTeam(Team team) {
+        this.teams.remove(team);
+    }
+
 }
