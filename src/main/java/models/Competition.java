@@ -14,12 +14,14 @@ public class Competition {
     private String name;
     private List<Team> teams;
     private int id;
+    private List<Match> fixtures;
 
     public Competition() { }
 
     public Competition(String name) {
         this.name = name;
         this.teams = new ArrayList<Team>();
+        this.fixtures = new ArrayList<Match>();
     }
 
 
@@ -60,4 +62,13 @@ public class Competition {
         this.teams.remove(team);
     }
 
+    @OneToMany(mappedBy = "competition")
+//    @Column(name = "match_id")
+    public List<Match> getFixtures() {
+        return fixtures;
+    }
+
+    public void setFixtures(List<Match> fixtures) {
+        this.fixtures = fixtures;
+    }
 }

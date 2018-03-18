@@ -18,5 +18,7 @@
         <mapping class="models.Manager"/>
         <mapping class="models.Team"/>
         <mapping class="models.Competition"/>
+        <mapping class="models.Match"/>
+        <mapping class="models.Goal"/>
     </session-factory>
 </hibernate-configuration>

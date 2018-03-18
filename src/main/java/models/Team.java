@@ -12,6 +12,8 @@ public class Team {
     private String name;
     private int id;
     private List<Competition> competitions;
+    private List<Goal> goals;
+    private List<Match> fixtures;
 
     public Team() {
     }
@@ -19,6 +21,8 @@ public class Team {
     public Team(String name) {
         this.name = name;
         this.competitions = new ArrayList<Competition>();
+        this.goals = new ArrayList<Goal>();
+        this.fixtures = new ArrayList<Match>();
     }
 
     @OneToMany(mappedBy = "team")
@@ -65,5 +69,24 @@ public class Team {
 
     public void enterCompetition(Competition competition) {
         competitions.add(competition);
+    }
+
+    @OneToMany(mappedBy = "team")
+    @Column(name = "goal_id")
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
+    }
+
+    @OneToMany(mappedBy = "team")
+    public List<Match> getFixtures() {
+        return fixtures;
+    }
+
+    public void setFixtures(List<Match> fixtures) {
+        this.fixtures = fixtures;
     }
 }
