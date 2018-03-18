@@ -12,6 +12,7 @@ public class PlayerTest {
 
     private Player player;
     private Team team;
+    private Team team2;
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +41,9 @@ public class PlayerTest {
     }
 
     @Test
-    public void testHasTeam() {
-        assertEquals("Glasgow Celtic", player.getTeam().getName());
+    public void testCanSetTeam() {
+        team2 = new Team("Manchester United");
+        player.setTeam(team2);
+        assertEquals("Manchester United", player.getTeam().getName());
     }
 }

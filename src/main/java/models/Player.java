@@ -8,6 +8,7 @@ public class Player extends Employee {
 
     private Position position;
     private int squadNumber;
+    private Team team;
 
     public Player() {
     }

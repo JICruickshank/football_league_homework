@@ -17,48 +17,35 @@ public class PlayerTest {
 
     private Player player;
     private Team team;
+    private Team team2;
 
     @Before
     public void setUp() throws Exception {
         team = new Team("Glasgow Celtic");
+        team2 = new Team("Wigan Athletic");
         player = new Player("Kieran Tierney", 20, team, Position.DEFENDER, 63);
+    }
+
+    @Test
+    public void testCanChangeTeam() {
+        DBHelper.saveOrUpdate(team);
+        DBHelper.saveOrUpdate(team2);
+        DBHelper.saveOrUpdate(player);
+        Player foundPlayer = DBHelper.findById(Player.class, player.getId());
+        assertEquals("Glasgow Celtic", foundPlayer.getTeam().getName());
+        foundPlayer.setTeam(team2);
+        DBHelper.saveOrUpdate(foundPlayer);
+        Player updatedPlayer = DBHelper.findById(Player.class, player.getId());
+        assertEquals("Wigan Athletic", updatedPlayer.getTeam().getName());
+    }
+
+    @Test
+    public void testCanDelete() {
         DBHelper.saveOrUpdate(team);
         DBHelper.saveOrUpdate(player);
-
-    }
-
-    @Test
-    public void testCanSave() {
         Player found = DBHelper.findById(Player.class, player.getId());
-        assertEquals(63, found.getSquadNumber());
-    }
-
-    @Test
-    public void testCanUpdate() {
-        Player found = DBHelper.findById(Player.class, player.getId());
-        assertEquals(63, found.getSquadNumber());
-        found.setSquadNumber(12);
-        DBHelper.saveOrUpdate(found);
-        Player updated = DBHelper.findById(Player.class, found.getId());
-        assertEquals(12, found.getSquadNumber());
-    }
-
-    @Test
-    public void testCanGetList() {
-        Player player2 = new Player("Moussa Dembele", 20, team, Position.ATTACKER, 10);
-        DBHelper.saveOrUpdate(player2);
-        List<Player> players = DBHelper.getAll(Player.class);
-        assertTrue(players.size() > 0);
-    }
-
-        @Test
-    public void testCanDelete() {
-        Player found = DBHelper.findById(Player.class, player.getId());
-        assertEquals("Kieran Tierney", player.getName());
+        assertEquals("Kieran Tierney", found.getName());
         DBHelper.delete(found);
-        Player result = DBHelper.findById(Player.class, player.getId());
-        assertNull(result);
-
-
+        assertNull(DBHelper.findById(Player.class, player.getId()));
     }
 }

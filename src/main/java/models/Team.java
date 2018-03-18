@@ -16,7 +16,6 @@ public class Team {
     }
 
     public Team(String name) {
-        this.employees = new ArrayList<Employee>();
         this.name = name;
     }
 
@@ -25,7 +24,7 @@ public class Team {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(List<Employee> employees ) {
         this.employees = employees;
     }
 

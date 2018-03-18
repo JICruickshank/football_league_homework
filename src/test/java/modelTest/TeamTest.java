@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 
 public class TeamTest {
 
@@ -18,7 +19,7 @@ public class TeamTest {
     @Before
     public void setUp() throws Exception {
         team = new Team("Glasgow Celtic");
-        manager = new Manager("Brendan Rodgers", 45, team);
+        manager = new Manager("Brendan Rodgers",45, team);
         player = new Player("Kieran Tierney", 20, team, Position.DEFENDER, 63);
 
     }
@@ -27,5 +28,4 @@ public class TeamTest {
     public void testCanGetTeamName() {
         assertEquals("Glasgow Celtic", team.getName());
     }
-
 }
